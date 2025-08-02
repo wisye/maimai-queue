@@ -1,5 +1,10 @@
-npm run start
+## install backend
+python3 -m venv venv
+pip install -r requirements.txt
 
-then
+# install frontend
+npm i
 
+# run
+npm start
 uvicorn app:app --reload
