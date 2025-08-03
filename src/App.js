@@ -110,7 +110,7 @@ export default function MaimaiQueueApp() {
             </ul>
           </div>
       
-          {/* <a href="https://discord.gg/s35uXgZn89"><img src="./discord.png" alt="discord server"></img></a> */}
+          <a href="https://discord.gg/s35uXgZn89" className="logo-social"><img src={require("./discord.png")} alt="discord server"></img></a>
         </div>
       </div>
   );

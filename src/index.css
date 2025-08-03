@@ -52,6 +52,12 @@ code {
   align-items: flex-start;
 }
 
+.logo-social {
+  height: 15pt;
+  width: 15pt;
+  filter: invert(100%);
+}
+
 input {
   color: #000000;
 }
