@@ -15,6 +15,18 @@ code {
     monospace;
 }
 
+#title-section {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: 5pt;
+}
+
+#title-section > img {
+  width: 25pt;
+  height: 25pt;
+}
+
 #outerWrap {
   display: flex;
   flex: 1;
@@ -56,6 +68,13 @@ code {
   height: 15pt;
   width: 15pt;
   filter: invert(100%);
+  transition: 300ms ease-in-out;
+}
+
+.logo-social:hover {
+  height: 20pt;
+  width: 20pt;
+  transition: 300ms ease-in-out;
 }
 
 input {

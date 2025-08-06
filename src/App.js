@@ -61,7 +61,13 @@ export default function MaimaiQueueApp() {
 
   return (
     <div className="max-w-xl mx-auto p-6 space-y-6" id="outerWrap">
-        <h1 className="text-3xl font-bold">MMCB Queue</h1>
+        <div id="title-section">
+          <img src={require("./mai.png")} alt="logo"></img>
+          <h1 className="text-3xl font-bold">
+            MMCB Queue
+          </h1>
+        </div>
+
         <div id="innerWrap">
           <div className="container-normal">
             <h2 className="text-xl font-semibold">
@@ -110,7 +116,7 @@ export default function MaimaiQueueApp() {
             </ul>
           </div>
       
-          <a href="https://discord.gg/s35uXgZn89" className="logo-social"><img src={require("./discord.png")} alt="discord server"></img></a>
+          <a href="https://discord.gg/s35uXgZn89" className="logo-social"><img src={require("./discord.png")} alt="discord server" title="MMCB Discord Server"></img></a>
         </div>
       </div>
   );
