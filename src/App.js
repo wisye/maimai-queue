@@ -16,15 +16,22 @@ export default function MaimaiQueueApp() {
   const handleAdd = async () => {
     const trimmed = username.trim();
     if (!trimmed || queue.includes(trimmed)) return;
+    if (trimmed.length > 8) {
+      alert("Username must be at most 8 characters");
+      return;
+    }
 
-    setQueue((prevQueue) => [...prevQueue, trimmed]);
     setUsername("");
 
-    await fetch(`${API_BASE}/join`, {
+    const res = await fetch(`${API_BASE}/join`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: trimmed })
     });
+    const data = await res.json();
+    if (data.error) {
+      alert(data.error);
+    }
   };
 
   const handleFinish = async () => {
@@ -58,6 +65,19 @@ export default function MaimaiQueueApp() {
       evt.close();
     };
   }, []);
+
+  const handleLeave = async () => {
+    const trimmed = username.trim();
+    if (!trimmed || !queue.includes(trimmed)) return;
+
+    setUsername("");
+
+    await fetch(`${API_BASE}/leave`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: trimmed })
+    });
+  };
 
   return (
     <div className="max-w-xl mx-auto p-6 space-y-6" id="outerWrap">

@@ -29,6 +29,8 @@ async def get_queue():
 @app.post("/join")
 async def join_queue(payload: dict):
     name = payload.get("username", "").strip()
+    if len(name) > 8:
+        return {"error": "Username must be at most 8 characters"}
     if name and name not in queue:
         queue.append(name)
         await notify_listeners()
@@ -58,3 +60,11 @@ async def events(request: Request):
             listeners.remove(q)
 
     return StreamingResponse(event_generator(), media_type="text/event-stream")
+
+@app.post("/leave")
+async def leave_queue(payload: dict):
+    name = payload.get("username", "").strip()
+    if name in queue:
+        queue.remove(name)
+        await notify_listeners()
+    return {"queue": queue}
