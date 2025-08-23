@@ -6,7 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #0f0f0f;
+  background-color: #000022;
   color: #ffffff;
 }
 
@@ -50,6 +50,10 @@ code {
   align-items: center;
   flex-wrap: wrap;
   padding: 15pt;
+}
+
+.container-normal:first {
+  padding: 5pt;
 }
 
 .container-normal:not(:first-of-type) {
