@@ -80,56 +80,64 @@ export default function MaimaiQueueApp() {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-6 space-y-6">
-      <h1 className="text-3xl font-bold">maimai Queue</h1>
+    <div className="max-w-xl mx-auto p-6 space-y-6" id="outerWrap">
+        <div id="title-section">
+          <img src={require("./mai.png")} alt="logo"></img>
+          <h1 className="text-3xl font-bold">
+            MMCB Queue
+          </h1>
+        </div>
 
-      <div className="flex gap-2">
-        <input
-          placeholder="Enter your username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && handleAdd()}
-          className="border border-gray-300 px-4 py-2 rounded-md w-full"
-        />
-        <button
-          onClick={handleAdd}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md"
-        >
-          Join Queue
-        </button>
-        <button
-          onClick={handleLeave}
-          className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md"
-        >
-          Leave Queue
-        </button>
-      </div>
+        <div id="innerWrap">
+          <div className="container-normal">
+            <h2 className="text-xl font-semibold">
+              Welcome! Please type your name below:
+            </h2>
+            <br></br>
+            <div className="flex gap-2">
+              <input
+                placeholder="Enter your username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleAdd()}
+                className="border border-gray-300 px-4 py-2 rounded-md w-full"
+              />
+              <button
+                onClick={handleAdd}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md"
+              >
+                Join Queue
+              </button>
+            </div>
+          </div>
 
-      <div>
-        <h2 className="text-xl font-semibold">Current Player:</h2>
-        <div className="text-2xl font-mono mt-2">{queue[0] || "No one yet"}</div>
-      </div>
+          <div className="container-normal">
+            <h2 className="text-xl font-semibold">Current Player:</h2>
+            <div className="text-2xl font-mono mt-2">{queue[0] || "No one yet"}</div>
+            <div>
+              <button
+                onClick={handleFinish}
+                disabled={queue.length === 0}
+                className="mt-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md"
+              >
+                Finish Game (Next Player)
+              </button>
+            </div>
+          </div>
 
-      <div>
-        <button
-          onClick={handleFinish}
-          disabled={queue.length === 0}
-          className="mt-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md"
-        >
-          Finish Game (Next Player)
-        </button>
+          <div className="container-normal">
+            <h2 className="text-xl font-semibold">Queue List:</h2>
+            <ul className="mt-2 list-decimal list-inside">
+              {queue.slice(1).map((name, index) => (
+                <li key={index} className="text-lg font-mono">
+                  {name}
+                </li>
+              ))}
+            </ul>
+          </div>
+      
+          <a href="https://discord.gg/s35uXgZn89" className="logo-social"><img src={require("./discord.png")} alt="discord server" title="MMCB Discord Server"></img></a>
+        </div>
       </div>
-
-      <div>
-        <h2 className="text-xl font-semibold mt-4">Queue:</h2>
-        <ul className="mt-2 list-decimal list-inside">
-          {queue.slice(1).map((name, index) => (
-            <li key={index} className="text-lg font-mono">
-              {name}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
   );
 }
